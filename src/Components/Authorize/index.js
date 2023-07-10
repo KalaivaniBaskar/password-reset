@@ -7,6 +7,7 @@ const Authorize = () => {
     const navigate = useNavigate();
     const verifyUser = async(id,token) => {
       //  console.log(id,token);
+        console.log("Verifying authorization");
         try{
          const response = await verifyAuthorization(id,token)
          if(response.status === 200){
