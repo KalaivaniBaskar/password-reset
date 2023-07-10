@@ -6,7 +6,7 @@ const ForgotPwd = () => {
     
     const [email, setEmail] = useState("");
     const navigate = useNavigate();
-    
+    const [msg, setMsg] = useState(false);
     const forgotPasswordDB = async(email) => {
         const response = await forgotPassword({email:email});
         return response;
@@ -18,7 +18,8 @@ const ForgotPwd = () => {
         navigate('/login');
     }
     function handleSubmit(e){
-        e.preventDefault();
+        e.preventDefault(); 
+        setMsg(true);
         //console.log(email); 
         const response = forgotPasswordDB(email)
         response
@@ -48,6 +49,7 @@ const ForgotPwd = () => {
                 </div>
                 <button type="submit" className="btn btn-sm btn-primary m-3">Send Reset Link</button>
             </form>
+            {msg && <p>Processing request.. Please wait..</p>}
         </div>
         </div>
         </div> 
