@@ -27,8 +27,13 @@ const Authorize = () => {
     }   
     useEffect(()=> {
        const id = searchparam.get("id")
-      const token  = searchparam.get("token")
-       verifyUser(id,token);
+      const token  = searchparam.get("token") 
+      if(id && token) {
+        verifyUser(id,token);
+      }
+       else {
+        window.alert("Password Reset link is invalid")
+       }
     },[searchparam])
     return(
         <div className="text-white mx-auto my-5">
