@@ -27,7 +27,7 @@ const Authorize = () => {
     }   
     useEffect(()=> {
        const id = searchparam.get("id")
-      const token  = searchparam.het("token")
+      const token  = searchparam.get("token")
        verifyUser(id,token);
     },[searchparam])
     return(
