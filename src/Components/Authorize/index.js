@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { verifyAuthorization } from "../../Services/apiServices";
-const Authorize = () => {
-    const {id,token} = useParams();
+const Authorize = () => {  
+    let id,token;
+    const {idtoken} = useParams();
     const [msg, setMsg] = useState("");
     const navigate = useNavigate();
     const verifyUser = async(id,token) => {
@@ -26,8 +27,11 @@ const Authorize = () => {
         
     }   
     useEffect(()=> {
+       let str = idtoken.split("~")
+       id = str[0];
+       token = str[1];
        verifyUser(id,token);
-    },[id,token])
+    },[id,token,idtoken])
     return(
         <div className="text-white mx-auto my-5">
         <h6>Verifying user authorization. Please wait .. </h6> 
